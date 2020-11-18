@@ -1,0 +1,230 @@
+.main{
+  overflow: hidden;
+  padding-bottom: 40px;
+  position: relative;
+  background: #fff;
+  .container{
+    width: 100%;
+    max-width: 1140px;
+    padding: 0 15px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    .main_title{
+      position: relative;
+      padding-top: 100px;
+      max-width: 540px;
+      .main_btns{
+        display: flex;
+        .icon_calc{
+          cursor: pointer;
+          background: #ff3338;
+          border: 1px solid #f02b30;
+          box-shadow: 0 4px 8px rgba(244,46,51,.15);
+          border-radius: 5px;
+          font-weight: 700;
+          font-size: 15px;
+          transition: all .3s ease;
+          color: #fff;
+          padding: 16px 28px;
+          position: relative;
+          vertical-align: middle;
+          &:after {
+            width: 18px;
+            height: 18px;
+            background-image: url("../../../public/ui/calc.svg");
+            margin-left: 11px;
+          }
+          &:hover{
+            opacity: .8;
+          }
+        }
+        .btn_help{
+          cursor: pointer;
+          border-radius: 5px;
+          font-weight: 700;
+          font-size: 15px;
+          transition: all .3s ease;
+          padding: 16px 28px;
+          position: relative;
+          vertical-align: middle;
+          margin: 0 0 0 24px;
+          border: 1px dashed #f02b30;
+          background-color: transparent;
+          color: #ff3338;
+          box-shadow: none;
+          &:hover{
+            opacity: .8;
+          }
+        }
+      }
+      .main_title__header{
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 140%;
+        color: #2a3540;
+        margin: 0 0 16px;
+      }
+      .main_title__text{
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 180%;
+        color: #506782;
+        margin: 0 0 30px;
+      }
+      .btn_help__text{
+        margin: 6% 10% 1% 0;
+        text-align: end;
+        color: #9ca7b4;
+        transition: all .3s ease;
+        font-weight: 700;
+        font-size: 12px;
+      }
+      .btn_help__text2{
+        margin: 0 0 2% 0;
+        text-align: end;
+        color: #9ca7b4;
+        transition: all .3s ease;
+        font-weight: 700;
+        font-size: 12px;
+        width: 50%;
+        margin-left: auto;
+        text-align: center;
+      }
+      .btn_help_img{
+        position: absolute;
+        top:53%;
+        right: -4%;
+      }
+    }
+    .main_img{
+      position: absolute;
+      left: 108%;
+      top: 62%;
+      z-index: -1;
+      transform: translate(-50%,-50%);
+      .main_img__macbook{
+        padding: 0 0 45px 45px;
+      }
+      .main_img__iphone{
+        position: absolute;
+        left: 0;
+        bottom: -50px;
+      }
+    }
+  }
+}
+
+
+@media only screen and (max-width: 560px) {
+  .container{
+    .main_title{
+      .main_btns{
+        display: block !important;
+        .icon_calc{
+          margin: 0px 40px 10px 40px !important;
+          padding: 16px 16px !important;
+        }
+        .btn_help{
+          margin: 0px 40px 40px 40px !important;
+          padding: 16px 6px !important;
+        }
+      }
+      .btn_help__text{
+        width: 100%;
+        max-width: 100%;
+        display: inline-block;
+        position: absolute;
+        top: 60%;
+        left: 0;
+        margin: 0 !important;
+        text-align: center !important;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 180%;
+        color: #9CA7B4;
+        -webkit-transition: all ease .3s;
+        transition: all ease .3s;
+      }
+      .btn_help__text2{
+        width: 100%;
+        max-width: 100%;
+        display: inline-block;
+        position: absolute;
+        top: 63%;
+        left: 10%;
+        margin: 0 !important;
+        text-align: center !important;
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 180%;
+        color: #9CA7B4;
+        -webkit-transition: all ease .3s;
+        transition: all ease .3s;
+      }
+      .btn_help_img{
+        transform: matrix(0,-1,-1,0,0,0) rotate(90deg);
+        right: auto !important;
+        left: 5px;
+        top: 57% !important;
+      }
+    }
+  }
+  .main_img {
+    position: absolute;
+    left: 108% !important;
+    top: 62% !important;
+    z-index: -1;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    .main-img__iphone {
+      position: absolute;
+      left: 0;
+      bottom: -50px;
+    }
+
+    .main-img__macbook {
+      padding: 0 0 45px 45px;
+    }
+  }
+}
+
+@media only screen and (max-width: 1039px) {
+  .main_title {
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 70px;
+  }
+
+  .main_img {
+    left: 40% !important;
+    width: 95%;
+    top: 81% !important;
+    max-width: 450px;
+  }
+
+  .main_img img {
+    max-width: 100%;
+  }
+
+  .main_img__macbook {
+    padding: 0;
+  }
+
+  .main_img__iphone {
+    max-width: 230px !important;
+    left: auto !important;
+    right: -70px !important;
+    bottom: -100px !important;
+  }
+  .btn_help_img{
+    position: absolute;
+    top:42% !important;
+    right: -5% !important;
+  }
+}
+@media only screen and (max-width: 560px){
+  .main_img {
+    top: 84% !important;
+  }
+}

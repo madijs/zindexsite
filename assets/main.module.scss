@@ -1,9 +1,11 @@
 .main{
   overflow: hidden;
   padding-bottom: 40px;
+  height: 500px;
   position: relative;
   background: #fff;
   .container{
+    height: 100%;
     width: 100%;
     max-width: 1140px;
     padding: 0 15px;
@@ -12,16 +14,16 @@
     z-index: 1;
     .main_title{
       position: relative;
-      padding-top: 100px;
       max-width: 540px;
+      margin-top: 40px;
       .main_btns{
         display: flex;
         .icon_calc{
           cursor: pointer;
-          background: #ff3338;
-          border: 1px solid #f02b30;
+          background: #4656F1;
+          border: 1px solid #4656F1;
           box-shadow: 0 4px 8px rgba(244,46,51,.15);
-          border-radius: 5px;
+          border-radius: 10px;
           font-weight: 700;
           font-size: 15px;
           transition: all .3s ease;
@@ -30,13 +32,13 @@
           position: relative;
           vertical-align: middle;
           &:after {
-            width: 18px;
-            height: 18px;
-            background-image: url("../../../public/ui/calc.svg");
+            width: 14px;
+            height: 14px;
+            background-image: url("../public/arrow-down.svg");
             margin-left: 11px;
           }
           &:hover{
-            opacity: .8;
+            box-shadow: 0 0 5px 2px #4656F1;
           }
         }
         .btn_help{
@@ -60,10 +62,12 @@
       }
       .main_title__header{
         font-weight: 700;
-        font-size: 48px;
+        font-size: 36px;
         line-height: 140%;
         color: #2a3540;
         margin: 0 0 16px;
+        font-family: 'Montserrat', sans-serif;
+
       }
       .main_title__text{
         font-weight: 400;
@@ -99,17 +103,14 @@
     }
     .main_img{
       position: absolute;
-      left: 108%;
-      top: 62%;
+      left: 84%;
+      top: 45%;
       z-index: -1;
-      transform: translate(-50%,-50%);
-      .main_img__macbook{
-        padding: 0 0 45px 45px;
-      }
-      .main_img__iphone{
-        position: absolute;
-        left: 0;
-        bottom: -50px;
+      -webkit-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+      width: 500px;
+      img{
+        width: 100%;
       }
     }
   }
@@ -119,14 +120,15 @@
 @media only screen and (max-width: 560px) {
   .container{
     .main_title{
+      padding: 30px !important;
       .main_btns{
-        display: block !important;
+        display: none !important;
         .icon_calc{
-          margin: 0px 40px 10px 40px !important;
+          margin: 0 40px 10px 40px !important;
           padding: 16px 16px !important;
         }
         .btn_help{
-          margin: 0px 40px 40px 40px !important;
+          margin: 0 40px 40px 40px !important;
           padding: 16px 6px !important;
         }
       }
@@ -173,7 +175,7 @@
   .main_img {
     position: absolute;
     left: 108% !important;
-    top: 62% !important;
+    top: 70% !important;
     z-index: -1;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
@@ -193,11 +195,28 @@
   .main_title {
     margin: 0 auto;
     text-align: center;
-    padding-top: 70px;
+    .main_btns{
+
+      justify-content: center;
+    }
+  }
+
+  .main_title__header{
+    //background: rgba(255,255,255,0.9);
+    //box-shadow: 0 0 5px 2px grey;
+    //padding: 10px 30px;
+  }
+  .main_title__text{
+    //background: rgba(255,255,255,0.9);
+    //padding: 10px 30px;
+    //color: #000 !important;
+    //font-weight: bold !important;
+    //box-shadow: 0 0 5px 2px grey;
   }
 
   .main_img {
-    left: 40% !important;
+    display: none;
+    left: 45% !important;
     width: 95%;
     top: 81% !important;
     max-width: 450px;
@@ -227,4 +246,11 @@
   .main_img {
     top: 84% !important;
   }
+  .main_title__header{
+    font-size: 30px !important;
+  }
+}
+
+.main_content{
+  height: 100%;
 }

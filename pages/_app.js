@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+import '../plugins/i18n'
 import Head from "next/head";
 
 function MyApp({ Component, pageProps }) {
@@ -7,7 +8,7 @@ function MyApp({ Component, pageProps }) {
         <Head>
           <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
         </Head>
-      <Component {...pageProps} />
+          <Component {...pageProps} />
       </>
   )
 }

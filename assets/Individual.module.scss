@@ -1,0 +1,35 @@
+.container{
+    display: flex;
+    align-items: center;
+    margin: 50px 40px 0 40px;
+    height: 150px;
+    background-image: url("https://www.pixelstalk.net/wp-content/uploads/2016/08/Black-Wallpaper-HD-1920x1080-Free-Download.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    .title{
+        font-family: "Arial Black", Arial, sans-serif;
+        font-size: 1.275rem;
+        flex: 3;
+        padding: 20px;
+        color: #fff;
+    }
+    .btn{
+        flex: 1;
+        display: flex;
+        align-items: center;
+        outline: none;
+        button{
+            outline: none;
+            cursor: pointer;
+            color: #fff;
+            background: #2ecc71;
+            -webkit-transition: .5s ease;
+            transition: .5s ease;
+            -webkit-box-shadow: 0 7px 40px 0 rgba(46,255,113,.2);
+            box-shadow: 0 7px 40px 0 rgba(46,255,113,.2);
+            border-radius: 3rem;
+            font-weight: 700;
+            padding: 1.25rem 2rem!important;
+        }
+    }
+}

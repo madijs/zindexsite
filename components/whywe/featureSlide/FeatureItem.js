@@ -1,4 +1,5 @@
-import styles from '../../../../assets/mainPage/features/featureItem.module.scss'
+import styles from '../../../assets/features/featureItem.module.scss'
+import React from 'react'
 
 export default function FeatureItem({title,description,image,key}) {
     return(

@@ -39,12 +39,14 @@ export default function Home() {
     const [language,setLanguage] = useState('ru');
     const [fullName,setFullName] = useState('');
 
-    const [fullNameError,setFullNameError] = useState(false);
-    const [emailError,setEmailError] = useState(false);
-    const [phoneNumberError,setPhoneNumberError] = useState(false);
+    const [fullNameError,setFullNameError] = useState(null);
+    const [emailError,setEmailError] = useState(null);
+    const [phoneNumberError,setPhoneNumberError] = useState(null);
 
     const [email,setEmail] = useState('');
     const [phoneNumber,setPhoneNumber] = useState('');
+
+    const [isFormTrue,setIsForm] = useState('');
 
     const changeLang = (lang) => {
         setLanguage(lang);
@@ -60,23 +62,24 @@ export default function Home() {
         setFullName('');
         setEmail('');
         setPhoneNumber('');
-        setEmailError(false);
-        setPhoneNumberError(false);
-        setFullNameError(false);
+        setEmailError(null);
+        setPhoneNumberError(null);
+        setFullNameError(null);
         setIsOpen(false);
+        setIsForm(null);
     }
 
     function changeName(name) {
         if(name.replace(/\s/g, '').length>0){
-            setFullNameError(false)
-        }else{
             setFullNameError(true)
+        }else{
+            setFullNameError(false)
         }
         setFullName(name)
     }
 
     function changeEmail(email) {
-        if (validateEmail(email)){
+        if (!validateEmail(email)){
             setEmailError(false)
         }else{
             setEmailError(true)
@@ -84,7 +87,7 @@ export default function Home() {
         setEmail(email)
     }
     function changePhone(phone) {
-        if(phone.length!==17){
+        if(phone.length===17){
             setPhoneNumberError(true)
         }else{
             setPhoneNumberError(false)
@@ -92,7 +95,7 @@ export default function Home() {
         setPhoneNumber(phone)
     }
     function submitForm() {
-        if (!phoneNumberError && !emailError && !fullNameError){
+        if (phoneNumberError && emailError && fullNameError && phoneNumber.length!==0 && email.length!==0 && fullName.length!==0){
             const payload = {
                 type: title,
                 phone: phoneNumber,
@@ -122,11 +125,12 @@ export default function Home() {
                     icon: "error",
                     button: "OK"
                 })
-            })
-
+            });
+            setIsForm(true)
+        }else{
+            setIsForm(false)
         }
     }
-
   return (
       <>
           <Head>
@@ -143,7 +147,7 @@ export default function Home() {
                  <div onClick={closeModal} className={styles.close}></div>
                  <div className={styles.modal_container}>
                      <div className={styles.modal_img}>
-                         <img src="/modal.png" alt=""/>
+                         <img src="/modal.svg" alt=""/>
                      </div>
                      <div className={styles.modal_form}>
                          <div className={styles.main_forms}>
@@ -151,34 +155,37 @@ export default function Home() {
                                 <span>{t('service.post')}</span>
                                  <p>#{title}</p>
                              </div>
+
+                                 <div style={{display:"flex",justifyContent:"start",width:"70%",color:"red",height:"30px"}}>
+                                     {isFormTrue===false && (
+                                         <>
+                                     {t("service.errorTxt")}
+                                     </>
+                                         )}
+                                 </div>
                              <div className={styles.forms_row}>
                                  <div>
-                                     <img src="/person.png" alt=""/>
+                                     <img src="/person.svg" alt=""/>
                                  </div>
                                  <div className={styles.input_div}>
-                                     <input onChange={(e)=>changeName(e.target.value)} placeholder="ВАШЕ ИМЯ" className={styles.input}/>
+                                     <input style={fullNameError===false ? {borderColor:"red"} : (fullNameError===true ? {borderColor:"green"} : {})} onChange={(e)=>changeName(e.target.value)} placeholder="ВАШЕ ИМЯ" className={styles.input}/>
                                  </div>
                              </div>
-                             {fullNameError && (
-                                 <div className={styles.invalid_field}>Введите имя</div>
-                             )}
                              <div className={styles.forms_row}>
                                  <div>
-                                     <img src="/msg.png" alt=""/>
+                                     <img src="/msg.svg" alt=""/>
                                  </div>
                                  <div className={styles.input_div}>
-                                     <input onChange={(e)=> changeEmail(e.target.value)} placeholder="EMAIL" className={styles.input}/>
+                                     <input style={emailError===false ? {borderColor:"red"} : (emailError===true ? {borderColor:"green"} : {})} onChange={(e)=> changeEmail(e.target.value)} placeholder="EMAIL" className={styles.input}/>
                                  </div>
                              </div>
-                             {emailError && (
-                                 <div className={styles.invalid_field}>Неккоректный формат почты</div>
-                             )}
                              <div className={styles.forms_row}>
                                  <div>
-                                     <img src="/ph.png" alt=""/>
+                                     <img src="/ph.svg" alt=""/>
                                  </div>
                                  <div className={styles.input_div}>
                                      <InputMask
+                                         style={phoneNumberError===false ? {borderColor:"red"} : (phoneNumberError===true ? {borderColor:"green"} : {})}
                                          onChange={(e)=>changePhone((e.target.value))}
                                          className={styles.input}
                                          placeholder="ВАШ НОМЕР ТЕЛЕФОНА"
@@ -189,9 +196,6 @@ export default function Home() {
                                      </InputMask>
                                  </div>
                              </div>
-                             {phoneNumberError && (
-                                 <div className={styles.invalid_field}>Номер телефона должен состоять из 11 цифр</div>
-                             )}
                              <div onClick={submitForm} className={styles.submit}>
                                  Отправить
                              </div>
@@ -200,7 +204,9 @@ export default function Home() {
                  </div>
              </div>
           </Modal>
-        <div style={modalIsOpen===true ? {overflow:"hidden"} : {}} className={styles.container}>
+        <div
+            // style={modalIsOpen===true ? {overflow:"hidden"} : {}}
+            className={styles.container}>
             <Header modalIsOpen={modalIsOpen} openModal={openModal} changeLang={changeLang} language={language}/>
             <Main modalIsOpen={modalIsOpen} executeScroll={executeScroll}/>
             <span ref={myRef2}>

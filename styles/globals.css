@@ -115,7 +115,7 @@ header .dropdown-lang {
   color: #4656F1;
 }
 header .dropdown-lang:after{
-  content: url("../public/ui/arrow-down.svg");
+  /*content: url("../public/ui/arrow-down.svg");*/
   margin-left: 8px;
   width: 12px;
   height: 8px;

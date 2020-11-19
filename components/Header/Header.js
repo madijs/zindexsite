@@ -40,23 +40,29 @@ export default function Header({language,changeLang,openModal,modalIsOpen}) {
                     <div style={{cursor:"pointer"}} onClick={()=>openModal("Проект")} className="order_project">
                         {t("header.orderProject")}
                     </div>
-                    <div style={{width:"50px",height:"50px",cursor:"pointer",marginRight:"10px"}} className="lang_img"><img style={{width:"100%",height:"100%",outline:"none"}} onClick={(e)=>{
+                    {/*<div style={{width:"50px",height:"50px",cursor:"pointer",marginRight:"10px"}} className="lang_img"><img style={{width:"100%",height:"100%",outline:"none"}} onClick={(e)=>{*/}
+                    {/*    if(language === "ru"){*/}
+                    {/*        languageChanged("kz",e)*/}
+                    {/*    }else{*/}
+                    {/*        languageChanged("ru",e)*/}
+                    {/*    }*/}
+                    {/*}} src={`/lang_${language}.png`} alt=""/></div>*/}
+                    <a style={{display:"flex",alignItems:"center"}} onClick={(e)=>{
                         if(language === "ru"){
                             languageChanged("kz",e)
                         }else{
                             languageChanged("ru",e)
                         }
-                    }} src={`/lang_${language}.png`} alt=""/></div>
-                    {/*<a href="#" className="dropdown-lang-btn dropdown-lang">*/}
-                    {/*    <img src={`/lang_${language}.png`} alt=""/>*/}
-                    {/*    <span style={{color:"#4656F1"}}>{language}</span>*/}
-                    {/*    <ul style={show ? {display: 'block'} : {}} className="dropdown-lang-menu">*/}
-                    {/*        <li onClick={(e) => languageChanged('ru', e)}><span className="dropdown-item">*/}
-                    {/*            <img src="/lang_ru.png" alt=""/>RU</span></li>*/}
-                    {/*        <li onClick={(e) => languageChanged('kz', e)}><span className="dropdown-item">*/}
-                    {/*            <img src="/lang_kz.png" alt=""/>KZ</span></li>*/}
-                    {/*    </ul>*/}
-                    {/*</a>*/}
+                    }} href="#" className="dropdown-lang-btn dropdown-lang">
+                        <img style={{width:"20px"}} src={`/lang_${language}.png`} alt=""/>
+                        <span style={{color:"#4656F1"}}>{language}</span>
+                        {/*<ul style={show ? {display: 'block'} : {}} className="dropdown-lang-menu">*/}
+                        {/*    <li onClick={(e) => languageChanged('ru', e)}><span className="dropdown-item">*/}
+                        {/*        <img src="/lang_ru.png" alt=""/>RU</span></li>*/}
+                        {/*    <li onClick={(e) => languageChanged('kz', e)}><span className="dropdown-item">*/}
+                        {/*        <img src="/lang_kz.png" alt=""/>KZ</span></li>*/}
+                        {/*</ul>*/}
+                    </a>
                 </div>
              </div>
         </header>
